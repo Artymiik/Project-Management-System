@@ -1,0 +1,69 @@
+a {
+  color: #ffffff;
+  text-decoration: none;
+  font-family: "Nunito", sans-serif;
+}
+
+header {
+  position: fixed;
+  inset: 0;
+  background: #0d1117;
+  width: 100%;
+  height: 11vh;
+  box-shadow: 0 0 9px 0 rgba(0, 0, 0, 0.8);
+}
+header .elem__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+  margin: 0 20px;
+}
+header .elem__header .left__header {
+  font-size: 17px;
+}
+header .elem__header .left__header a {
+  margin-right: 20px;
+  font-weight: 400;
+}
+header .elem__header .left__header a:hover {
+  color: #4493f8;
+}
+header .elem__header .right__header {
+  display: flex;
+  align-items: center;
+}
+header .elem__header .right__header a:nth-child(1) {
+  border: 1px solid gray;
+  padding: 10px 20px;
+  border-radius: 6px;
+  font-weight: 800;
+  letter-spacing: 0.3px;
+  margin-right: 10px;
+}
+header .elem__header .right__header a:nth-child(1):hover {
+  border: 1px solid #ffffff;
+  transition: 0.3s;
+}
+header .elem__header .right__header a:nth-child(2) {
+  background: #ffffff;
+  padding: 10px 20px;
+  border-radius: 6px;
+  font-weight: 800;
+  color: #000000;
+}
+header .elem__header .right__header a:nth-child(2):hover {
+  box-shadow: 0 4px 7px rgba(0, 0, 0, 0.15), 0 100px 80px rgba(255, 255, 255, 0.02), 0 42px 33px rgba(255, 255, 255, 0.024), 0 22px 18px rgba(255, 255, 255, 0.028), 0 12px 10px rgba(255, 255, 255, 0.034), 0 7px 5px rgba(255, 255, 255, 0.04), 0 3px 2px rgba(255, 255, 255, 0.07) !important;
+}
+header .elem__header .right__header a {
+  display: flex;
+  align-items: center;
+}
+header .elem__header .right__header a svg {
+  width: 18px;
+  margin-left: 3px;
+}
+
+/*# sourceMappingURL=Header.css.map */

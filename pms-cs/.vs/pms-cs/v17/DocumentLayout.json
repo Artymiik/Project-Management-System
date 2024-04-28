@@ -1,0 +1,54 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\Artemiik\\Documents\\git\\Project-Management-System\\pms-cs\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{9C8107DA-9F17-4EDC-B9FA-1C57DE776912}|pms-cs\\pms-cs.csproj|c:\\users\\artemiik\\documents\\git\\project-management-system\\pms-cs\\pms-cs\\models\\appuser.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9C8107DA-9F17-4EDC-B9FA-1C57DE776912}|pms-cs\\pms-cs.csproj|solutionrelative:pms-cs\\models\\appuser.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9C8107DA-9F17-4EDC-B9FA-1C57DE776912}|pms-cs\\pms-cs.csproj|c:\\users\\artemiik\\documents\\git\\project-management-system\\pms-cs\\pms-cs\\pms-cs.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{9C8107DA-9F17-4EDC-B9FA-1C57DE776912}|pms-cs\\pms-cs.csproj|solutionrelative:pms-cs\\pms-cs.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "AppUser.cs",
+              "DocumentMoniker": "C:\\Users\\Artemiik\\Documents\\git\\Project-Management-System\\pms-cs\\pms-cs\\Models\\AppUser.cs",
+              "RelativeDocumentMoniker": "pms-cs\\Models\\AppUser.cs",
+              "ToolTip": "C:\\Users\\Artemiik\\Documents\\git\\Project-Management-System\\pms-cs\\pms-cs\\Models\\AppUser.cs",
+              "RelativeToolTip": "pms-cs\\Models\\AppUser.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAQAAAAUAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-28T13:00:18.335Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "pms-cs",
+              "DocumentMoniker": "C:\\Users\\Artemiik\\Documents\\git\\Project-Management-System\\pms-cs\\pms-cs\\pms-cs.csproj",
+              "RelativeDocumentMoniker": "pms-cs\\pms-cs.csproj",
+              "ToolTip": "C:\\Users\\Artemiik\\Documents\\git\\Project-Management-System\\pms-cs\\pms-cs\\pms-cs.csproj",
+              "RelativeToolTip": "pms-cs\\pms-cs.csproj",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA4AAAAqAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2024-04-28T13:00:07.19Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

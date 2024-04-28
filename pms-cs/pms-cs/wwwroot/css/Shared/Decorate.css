@@ -1,0 +1,85 @@
+#circle {
+  position: absolute;
+  top: 85%;
+  right: 15%;
+  z-index: -1;
+  transform: translate(-50%, -50%);
+}
+#circle .position {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+#circle .circle__1 {
+  height: 80vh;
+  width: 40vw;
+  border: 2px solid #282828;
+  border-radius: 50%;
+  background: transparent;
+  position: fixed;
+}
+#circle .circle__2 {
+  height: 50vh;
+  width: 25vw;
+  border: 2px solid #282828;
+  border-radius: 50%;
+  position: fixed;
+  background: transparent;
+}
+#circle .circle__3 {
+  height: 34vh;
+  width: 16.5vw;
+  border: 2px solid #282828;
+  border-radius: 50%;
+  position: fixed;
+  background: transparent;
+}
+
+#circle_and_quer {
+  position: absolute;
+  top: 250%;
+  right: 5%;
+  z-index: -1;
+  transform: translate(-50%, -50%);
+}
+#circle_and_quer .position {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+#circle_and_quer .position .quer {
+  height: 66vh;
+  width: 32vw;
+  border: 2px solid #282828;
+  background: transparent;
+  position: fixed;
+  transform: rotate(240deg);
+  animation: spin infinite 220s linear;
+}
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+#circle_and_quer .position .circle {
+  height: 66vh;
+  width: 32vw;
+  border-radius: 50%;
+  border: 2px solid #282828;
+  background: transparent;
+  position: fixed;
+  animation: spin infinite 220s linear;
+}
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/*# sourceMappingURL=Decorate.css.map */

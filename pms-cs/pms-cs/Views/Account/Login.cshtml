@@ -1,0 +1,25 @@
+﻿@using pms_cs.ViewModel
+
+@model LoginViewModel
+@{
+    ViewData["Title"] = "Sign in to PMS";
+}
+
+<head>
+    <link rel="stylesheet" href="~/css/Account/Login.css">
+</head>
+
+<section id="Account">
+    <p class="Title__signin">Sign in to PMS</p>
+    <div class="Account">
+        <form asp-action="Login" method="post">
+            <label asp-for="Username_Email">Username or email addrress</label>
+            <input asp-for="Username_Email" type="text">
+
+            <label asp-for="Password">Password</label>
+            <input asp-for="Password" type="password">
+            <button>Sign in</button>
+        </form>
+    </div>
+    <p class="signup">New to PMS? <a asp-action="Register" asp-controller="Account">Create an account</a></p>
+</section>
