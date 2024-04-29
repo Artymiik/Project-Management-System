@@ -12,12 +12,18 @@
 <section id="Account">
     <p class="Title__signin">Sign in to PMS</p>
     <div class="Account">
+        @if (TempData["Error"] != null)
+        {
+            <p class="Error"><b>Sorry</b> - @TempData["Error"]</p>
+        }
         <form asp-action="Login" method="post">
-            <label asp-for="Username_Email">Username or email addrress</label>
+            <label asp-for="Username_Email">Username or email address</label>
             <input asp-for="Username_Email" type="text">
+            <span asp-validation-for="Username_Email" class="text-danger"></span>
 
             <label asp-for="Password">Password</label>
             <input asp-for="Password" type="password">
+            <span asp-validation-for="Password" class="text-danger"></span>
             <button>Sign in</button>
         </form>
     </div>

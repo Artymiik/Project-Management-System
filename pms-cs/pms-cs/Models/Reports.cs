@@ -5,6 +5,7 @@ namespace pms_cs.Models;
 
 public class Reports
 {
+    
     [Key] public int Id { get; set; }
     public string Title { get; set; } = string.Empty;
     public string Description { get; set; } = string.Empty;
@@ -15,5 +16,5 @@ public class Reports
     public string Projects { get; set; } = string.Empty;
     public string Tasks { get; set; } = string.Empty;
     
-    [ForeignKey("AppUser")] public string? TypeAppUserId { get; set; }
+    [ForeignKey("AppUser")] public string? AppUserId { get; set; }
 }

@@ -15,5 +15,6 @@ public class AppUser : IdentityUser
     {
         var now = DateTime.Now;
         CreatedAt = now;
+        Company = null;
     }
 }

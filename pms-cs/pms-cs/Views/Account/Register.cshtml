@@ -1,4 +1,8 @@
-﻿@{
+﻿@using pms_cs.ViewModel
+
+@model RegisterViewModel
+
+@{
     ViewData["Title"] = "Sign up to PMS";
 }
 
@@ -6,4 +10,27 @@
     <link rel="stylesheet" href="~/css/Account/Register.css">
 </head>
 
-<h1>This is register</h1>
+<section id="Account">
+  <p class="Title__signup">Sign up to PMS</p>
+  <div class="Account">
+      @if (TempData["Error"] != null)
+      {
+          <p class="Error"><b>Sorry!</b> - @TempData["Error"]</p>
+      }
+      <form asp-action="Register" method="post">
+          <label asp-for="Email">Email address</label>
+          <input asp-for="Email" type="email">
+          <span asp-validation-for="Email" class="text-danger"></span>
+
+          <label asp-for="Username">Username</label>
+          <input asp-for="Username" type="text">
+          <span asp-validation-for="Username" class="text-danger"></span>
+
+          <label asp-for="Password">Password</label>
+          <input asp-for="Password" type="password">
+          <span asp-validation-for="Password" class="text-danger"></span>
+          <button>Sign up</button>
+      </form>
+  </div>
+  <p class="signup">Already have an account? <a asp-action="Login" asp-controller="Account">Sign in</a></p>
+</section>
