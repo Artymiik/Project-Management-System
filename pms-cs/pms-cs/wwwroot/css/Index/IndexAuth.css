@@ -1,0 +1,325 @@
+body {
+  background: #06060b;
+  margin: 0 20px 0 0;
+  padding: 0;
+}
+
+#popUp {
+  position: absolute;
+  right: 6%;
+  top: 7%;
+}
+#popUp .style__popup {
+  background: #161b22;
+  padding: 10px;
+  border: max(1px, 0.0625rem) solid #30363d !important;
+  border-radius: 6px;
+  box-shadow: 0 0 100px 0 rgba(0, 0, 0, 0.9);
+  opacity: 0;
+  pointer-events: none;
+  transition: 0.2s;
+}
+#popUp .style__popup .line {
+  position: relative;
+  left: -10px;
+  width: 114%;
+  height: 1px;
+  background: #30363d;
+  margin-top: 7px;
+  margin-bottom: 7px;
+}
+#popUp .style__popup .elem:hover {
+  background: rgba(177, 186, 196, 0.1215686275);
+}
+#popUp .style__popup .elem {
+  display: flex;
+  align-items: center;
+  color: gray;
+  padding: 6px 8px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+#popUp .style__popup .elem svg {
+  width: 19px;
+}
+#popUp .style__popup .elem a {
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 13px;
+  letter-spacing: 0.4px;
+  margin-left: 8px;
+}
+#popUp .style__popup.active {
+  opacity: 1;
+  pointer-events: all;
+}
+
+header {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 9vh;
+  border-bottom: max(1px, 0.0625rem) solid #30363d !important;
+}
+header .container__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 0 40px;
+  color: #ffffff;
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+}
+header .container__header .left p {
+  letter-spacing: 0.5px;
+  font-weight: 600;
+  cursor: pointer;
+}
+header .container__header .right {
+  display: flex;
+  align-items: center;
+}
+header .container__header .right svg {
+  border: max(1px, 0.0625rem) solid #30363d !important;
+  width: 18px;
+  color: gray;
+  padding: 0 10px;
+  border-radius: 4px;
+  margin-right: 15px;
+  cursor: pointer;
+}
+header .container__header .right svg:hover {
+  background: #30363d;
+}
+header .container__header .right .logo {
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.elements .page {
+  margin-top: 68px;
+  display: flex;
+}
+.elements .page .Management {
+  flex: 22%;
+  background: #0d1117;
+  height: 100vh;
+  border-right: max(1px, 0.0625rem) solid #30363d !important;
+}
+.elements .page .Management .top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 40px 20px 0;
+  color: #ffffff;
+}
+.elements .page .Management .top a {
+  background: #238636;
+  border-radius: 6px;
+  padding: 5px 15px;
+  text-decoration: none;
+  font-weight: 700;
+  color: #ffffff;
+  letter-spacing: 0.4px;
+  font-size: 13px;
+}
+.elements .page .Management .top a:hover {
+  background: #2b953f;
+}
+.elements .page .Management .find input {
+  position: relative;
+  outline-color: #0a58ca;
+  margin: 0px 20px;
+  font-size: 14px;
+  padding: 5px 5px 5px 8px;
+  background: #161b22;
+  border: 1px solid rgba(48, 54, 61, 0.7019607843);
+  border-radius: 6px;
+  color: #ffffff;
+  width: 83%;
+}
+.elements .page .Management .peoples {
+  padding: 10px 20px;
+}
+.elements .page .Management .peoples .people {
+  display: flex;
+  align-items: center;
+}
+.elements .page .Management .peoples .people p {
+  color: #ffffff;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.4px;
+  margin: 7px 10px;
+}
+.elements .page .Management .peoples .people img {
+  width: 20px;
+  border-radius: 50%;
+}
+.elements .page .Management .link {
+  margin: 20px 20px;
+}
+.elements .page .Management .link .Title__link {
+  font-weight: 600;
+  letter-spacing: 0.6px;
+  color: #ffffff;
+}
+.elements .page .Management .link .link__block {
+  padding: 10px 20px 12px;
+  border-radius: 4px;
+  border: 1px dashed gray;
+}
+.elements .page .Management .link .link__block a {
+  color: gray;
+  font-size: 12px;
+  letter-spacing: 0.4px;
+  cursor: pointer;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.elements .page .Management .link .link__block a svg {
+  width: 16px;
+  margin-right: 10px;
+}
+.elements .page .Management .link .link__block a:hover {
+  color: #0a53be;
+}
+.elements .page .Functions {
+  flex: 50%;
+  padding: 0 20px;
+}
+.elements .page .Functions .Title__function {
+  color: #ffffff;
+  font-weight: 700;
+  font-size: 24px;
+  margin-bottom: 5px;
+}
+.elements .page .Functions .Description__function__block {
+  color: #848d97;
+  display: flex;
+  align-items: center;
+}
+.elements .page .Functions .Description__function__block p {
+  margin-left: 10px;
+}
+.elements .page .Functions .Description__function__block .border__svg {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: rgba(110, 118, 129, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.elements .page .Functions .Description__function__block svg {
+  width: 16px;
+}
+.elements .page .Functions .Navigation__block__function {
+  display: flex;
+  justify-content: space-between;
+}
+.elements .page .Functions .Navigation__block__function .left, .elements .page .Functions .Navigation__block__function .right {
+  color: #ffffff;
+  background: #161b22;
+  width: 43.5%;
+  border: max(1px, 0.0625rem) solid #30363d !important;
+  padding: 15px 20px;
+  border-radius: 4px;
+}
+.elements .page .Functions .Navigation__block__function .left p, .elements .page .Functions .Navigation__block__function .right p {
+  margin: 0;
+}
+.elements .page .Functions .Navigation__block__function .left .card__create__task .Title__card, .elements .page .Functions .Navigation__block__function .left .card__create__report .Title__card, .elements .page .Functions .Navigation__block__function .right .card__create__task .Title__card, .elements .page .Functions .Navigation__block__function .right .card__create__report .Title__card {
+  font-weight: 700;
+  margin-bottom: 10px;
+  font-size: 14px;
+}
+.elements .page .Functions .Navigation__block__function .left .card__create__task .Description__task, .elements .page .Functions .Navigation__block__function .left .card__create__report .Description__task, .elements .page .Functions .Navigation__block__function .right .card__create__task .Description__task, .elements .page .Functions .Navigation__block__function .right .card__create__report .Description__task {
+  color: gray;
+  font-size: 14px;
+  margin-bottom: 10px;
+}
+.elements .page .Functions .Navigation__block__function .left .card__create__task .flex, .elements .page .Functions .Navigation__block__function .left .card__create__report .flex, .elements .page .Functions .Navigation__block__function .right .card__create__task .flex, .elements .page .Functions .Navigation__block__function .right .card__create__report .flex {
+  display: flex;
+  justify-content: space-between;
+}
+.elements .page .Functions .Navigation__block__function .left .card__create__task .flex input, .elements .page .Functions .Navigation__block__function .left .card__create__report .flex input, .elements .page .Functions .Navigation__block__function .right .card__create__task .flex input, .elements .page .Functions .Navigation__block__function .right .card__create__report .flex input {
+  width: 48%;
+}
+.elements .page .Functions .Navigation__block__function .left .card__create__task form, .elements .page .Functions .Navigation__block__function .left .card__create__report form, .elements .page .Functions .Navigation__block__function .right .card__create__task form, .elements .page .Functions .Navigation__block__function .right .card__create__report form {
+  display: flex;
+  flex-direction: column;
+}
+.elements .page .Functions .Navigation__block__function .left .card__create__task form label, .elements .page .Functions .Navigation__block__function .left .card__create__report form label, .elements .page .Functions .Navigation__block__function .right .card__create__task form label, .elements .page .Functions .Navigation__block__function .right .card__create__report form label {
+  font-weight: 700;
+  font-size: 14px;
+}
+.elements .page .Functions .Navigation__block__function .left .card__create__task form input, .elements .page .Functions .Navigation__block__function .left .card__create__task form textarea, .elements .page .Functions .Navigation__block__function .left .card__create__task form select, .elements .page .Functions .Navigation__block__function .left .card__create__report form input, .elements .page .Functions .Navigation__block__function .left .card__create__report form textarea, .elements .page .Functions .Navigation__block__function .left .card__create__report form select, .elements .page .Functions .Navigation__block__function .right .card__create__task form input, .elements .page .Functions .Navigation__block__function .right .card__create__task form textarea, .elements .page .Functions .Navigation__block__function .right .card__create__task form select, .elements .page .Functions .Navigation__block__function .right .card__create__report form input, .elements .page .Functions .Navigation__block__function .right .card__create__report form textarea, .elements .page .Functions .Navigation__block__function .right .card__create__report form select {
+  outline-color: #0a58ca;
+  font-size: 14px;
+  padding: 5px 5px 5px 8px;
+  background: #0d1117;
+  border: 1px solid rgba(48, 54, 61, 0.7019607843);
+  border-radius: 6px;
+  color: #ffffff;
+  margin-top: 5px;
+  resize: none;
+}
+.elements .page .Functions .Navigation__block__function .left .card__create__task form textarea, .elements .page .Functions .Navigation__block__function .left .card__create__report form textarea, .elements .page .Functions .Navigation__block__function .right .card__create__task form textarea, .elements .page .Functions .Navigation__block__function .right .card__create__report form textarea {
+  height: 80px;
+}
+.elements .page .Functions .Navigation__block__function .left .card__create__task form button, .elements .page .Functions .Navigation__block__function .left .card__create__report form button, .elements .page .Functions .Navigation__block__function .right .card__create__task form button, .elements .page .Functions .Navigation__block__function .right .card__create__report form button {
+  background: #2b953f;
+  color: #ffffff;
+  border: none;
+  border-radius: 6px;
+  width: 80px;
+  margin: 20px 0 50px;
+  font-weight: 600;
+  padding: 6px 0;
+  cursor: pointer;
+}
+.elements .page .Tasks {
+  flex: 25%;
+  margin-top: 30px;
+}
+.elements .page .Tasks .Tasks__card {
+  background: #0d1117;
+  color: #ffffff;
+  padding: 10px 15px;
+  border-radius: 4px;
+  border: max(1px, 0.0625rem) solid #30363d !important;
+}
+.elements .page .Tasks .Tasks__card p {
+  margin: 0;
+}
+.elements .page .Tasks .Tasks__card .Title__card {
+  font-weight: 700;
+  font-size: 16px;
+  margin-bottom: 20px;
+  margin-top: 10px;
+  letter-spacing: 0.5px;
+}
+.elements .page .Tasks .Tasks__card .task__number {
+  margin-bottom: 20px;
+}
+.elements .page .Tasks .Tasks__card .task__number .time {
+  color: gray;
+  font-size: 13px;
+  margin-bottom: 5px;
+}
+.elements .page .Tasks .Tasks__card .task__number a {
+  color: #ffffff;
+  font-weight: 300;
+  line-height: 20px;
+}
+.elements .page .Tasks .Tasks__card .task__number a:hover {
+  color: #0a53be;
+}
+
+/*# sourceMappingURL=IndexAuth.css.map */

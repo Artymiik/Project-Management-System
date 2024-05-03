@@ -1,0 +1,31 @@
+﻿@using pms_cs.ViewModel
+
+@model CompanyCreateViewModel
+
+@{
+    ViewData["Title"] = "Create company";
+}
+
+<head>
+    <link rel="stylesheet" href="~/css/Company/Company.css">
+</head>
+
+<section id="CreateCompany">
+    <p class="Title__company">Create company</p>
+    <div class="Company">
+        <form asp-action="Create" asp-controller="Company" method="post">
+            <label asp-for="Name">Name company</label>
+            <input asp-for="Name" type="text">
+            <span asp-validation-for="Name" class="text-danger"></span>
+
+            <label asp-for="SecretWord">Secret word</label>
+            <input asp-for="SecretWord" type="password">
+            <span asp-validation-for="SecretWord" class="text-danger"></span>
+
+            <label asp-for="Password">Password for company</label>
+            <input asp-for="Password" type="password">
+            <span asp-validation-for="Password" class="text-danger"></span>
+            <button>Create company</button>
+        </form>
+    </div>
+</section>

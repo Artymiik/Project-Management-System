@@ -1,0 +1,24 @@
+﻿@{
+    ViewData["Title"] = "Sign in company";
+}
+
+<head>
+    <link rel="stylesheet" href="~/css/Company/Company_signin.css">
+</head>
+
+<section id="SigninCompany">
+    <p class="Title__company">Create company</p>
+    <div class="Signin__company">
+        <form method="post">
+            <label>Name company</label>
+            <input type="text">
+            <span class="text-danger"></span>
+
+            <label>Password for company</label>
+            <input type="password">
+            <span class="text-danger"></span>
+            <button>Sign in company</button>
+        </form>
+    </div>
+    <p class="index">To the main <a asp-action="Index" asp-controller="Home">page</a></p>
+</section>

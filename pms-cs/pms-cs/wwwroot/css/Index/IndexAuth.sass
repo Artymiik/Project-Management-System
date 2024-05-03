@@ -1,0 +1,305 @@
+﻿body
+  background: #06060b 
+  margin: 0 20px 0 0
+  padding: 0
+  
+#popUp
+  position: absolute
+  right: 6%
+  top: 7%
+  
+  .style__popup
+    background: #161b22
+    padding: 10px
+    border: max(1px, 0.0625rem) solid #30363d !important
+    border-radius: 6px
+    box-shadow: 0 0 100px 0 rgba(0, 0, 0, 0.9)
+
+    opacity: 0
+    pointer-events: none
+    transition: .2s
+    
+    .line
+      position: relative
+      left: -10px
+      width: 114%
+      height: 1px
+      background: #30363d
+      margin-top: 7px
+      margin-bottom: 7px
+    
+    .elem:hover
+      background: #b1bac41f
+    .elem
+      display: flex
+      align-items: center
+      color: gray
+      padding: 6px 8px
+      border-radius: 6px
+      cursor: pointer
+      
+      svg
+        width: 19px
+      
+      a
+        color: #ffffff
+        text-decoration: none
+        font-size: 13px
+        letter-spacing: .4px
+        margin-left: 8px
+        
+  .style__popup.active
+    opacity: 1
+    pointer-events: all
+  
+header
+  position: absolute
+  inset: 0
+  width: 100%
+  height: 9vh
+  border-bottom: max(1px, 0.0625rem) solid #30363d !important
+  
+  .container__header
+    display: flex
+    align-items: center
+    justify-content: space-between
+    margin: 0 40px
+    color: #ffffff
+    
+    position: relative
+    top: 50%
+    transform: translateY(-50%)
+    
+    .left
+      p
+        letter-spacing: .5px
+        font-weight: 600
+        cursor: pointer
+    
+    .right
+      display: flex
+      align-items: center
+      
+      svg
+        border: max(1px, 0.0625rem) solid #30363d !important
+        width: 18px
+        color: gray
+        padding: 0 10px
+        border-radius: 4px
+        margin-right: 15px
+        cursor: pointer
+      svg:hover
+        background: #30363d
+      
+      .logo
+        width: 35px
+        height: 35px
+        border-radius: 50%
+        object-fit: cover
+        
+.elements
+  
+  .page
+    margin-top: 68px
+    display: flex
+    
+    .Management
+      flex: 22%
+      background: #0d1117
+      height: 100vh
+      border-right: max(1px, 0.0625rem) solid #30363d !important
+      
+      .top
+        display: flex
+        align-items: center
+        justify-content: space-between
+        margin: 40px 20px 0
+        color: #ffffff
+        
+        a
+          background: #238636
+          border-radius: 6px
+          padding: 5px 15px
+          text-decoration: none
+          font-weight: 700
+          color: #ffffff
+          letter-spacing: .4px
+          font-size: 13px
+        a:hover
+          background: #2b953f
+          
+      .find
+        input
+          position: relative
+          outline-color: #0a58ca
+          margin: 0px 20px
+          font-size: 14px
+          padding: 5px 5px 5px 8px
+          background: #161b22
+          border: 1px solid #30363db3
+          border-radius: 6px
+          color: #ffffff
+          width: 83%
+          
+      .peoples
+        padding: 10px 20px
+        .people
+          display: flex
+          align-items: center
+          p
+            color: #ffffff
+            font-size: 13px
+            font-weight: 600
+            letter-spacing: .4px
+            margin: 7px 10px
+          img
+            width: 20px
+            border-radius: 50%
+            
+      .link
+        margin: 20px 20px
+        .Title__link
+          font-weight: 600
+          letter-spacing: .6px
+          color: #ffffff
+        .link__block
+          padding: 10px 20px 12px
+          border-radius: 4px
+          border: 1px dashed gray
+          a
+            color: gray
+            font-size: 12px
+            letter-spacing: .4px
+            cursor: pointer
+            text-decoration: none
+            display: flex
+            align-items: center
+            justify-content: center
+            
+            svg
+              width: 16px
+              margin-right: 10px
+          a:hover
+            color: #0a53be
+        
+    .Functions
+      flex: 50%
+      padding: 0 20px
+      
+      .Title__function
+        color: #ffffff
+        font-weight: 700
+        font-size: 24px
+        margin-bottom: 5px
+        
+      .Description__function__block
+        color: #848d97
+        display: flex
+        align-items: center
+        
+        p
+          margin-left: 10px
+        .border__svg
+          width: 30px
+          height: 30px
+          border-radius: 50%
+          background: #6e768166
+          display: flex
+          align-items: center
+          justify-content: center
+        svg
+          width: 16px
+          
+      .Navigation__block__function
+        display: flex
+        justify-content: space-between
+        
+        .left, .right
+          color: #ffffff
+          background: #161b22
+          width: 43.5%
+          border: max(1px, 0.0625rem) solid #30363d !important
+          padding: 15px 20px
+          border-radius: 4px
+          
+          p
+            margin: 0
+            
+          .card__create__task, .card__create__report
+            
+            .Title__card
+              font-weight: 700
+              margin-bottom: 10px
+              font-size: 14px
+            .Description__task
+              color: gray
+              font-size: 14px
+              margin-bottom: 10px
+              
+            .flex
+              display: flex
+              justify-content: space-between
+              input
+                width: 48%
+              
+            form
+              display: flex
+              flex-direction: column
+              label
+                font-weight: 700
+                font-size: 14px
+              input, textarea, select
+                outline-color: #0a58ca
+                font-size: 14px
+                padding: 5px 5px 5px 8px
+                background: #0d1117
+                border: 1px solid #30363db3
+                border-radius: 6px
+                color: #ffffff
+                margin-top: 5px
+                resize: none
+              textarea
+                height: 80px
+              button
+                background: #2b953f
+                color: #ffffff
+                border: none
+                border-radius: 6px
+                width: 80px
+                margin: 20px 0 50px
+                font-weight: 600
+                padding: 6px 0
+                cursor: pointer
+      
+    .Tasks
+      flex: 25%
+      margin-top: 30px
+      
+      .Tasks__card
+        background: #0d1117
+        color: #ffffff
+        padding: 10px 15px
+        border-radius: 4px
+        border: max(1px, 0.0625rem) solid #30363d !important
+        
+        p
+          margin: 0
+        .Title__card
+          font-weight: 700
+          font-size: 16px
+          margin-bottom: 20px
+          margin-top: 10px
+          letter-spacing: .5px
+        .task__number
+          margin-bottom: 20px
+          .time
+            color: gray
+            font-size: 13px
+            margin-bottom: 5px
+            
+          a
+            color: #ffffff
+            font-weight: 300
+            line-height: 20px
+          a:hover
+            color: #0a53be

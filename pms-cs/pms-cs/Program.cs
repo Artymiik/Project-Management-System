@@ -3,11 +3,15 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using pms_cs.Data;
 using pms_cs.Models;
+using pms_cs.Repository;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
+// Injective
+builder.Services.AddScoped<CompanyNumber>();
 
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
 {

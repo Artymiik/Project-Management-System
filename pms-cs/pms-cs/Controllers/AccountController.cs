@@ -1,10 +1,12 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using pms_cs.Models;
 using pms_cs.ViewModel;
 
 namespace pms_cs.Controllers;
 
+[AllowAnonymous]
 public class AccountController : Controller
 {
     private readonly UserManager<AppUser> _userManager;

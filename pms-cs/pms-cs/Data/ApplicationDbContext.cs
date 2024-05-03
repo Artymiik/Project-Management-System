@@ -11,8 +11,8 @@ public class ApplicationDbContext : IdentityDbContext<AppUser>
         
     }
 
-    public DbSet<AppUser> AppUser;
-    public DbSet<AppCompany> AppCompany;
-    public DbSet<AppTask> AppTask;
-    public DbSet<Reports> Reports;
+    public DbSet<AppUser> AppUser { get; set; }
+    public DbSet<AppCompany> AppCompany { get; set; }
+    public DbSet<AppTask> AppTask { get; set; }
+    public DbSet<Reports> Reports { get; set; }
 }

@@ -1,4 +1,6 @@
-﻿@{
+﻿@model IndexModel
+
+@{
     ViewData["Title"] = "PMS: Start project management with ease!";
 }
 
@@ -6,60 +8,17 @@
     <link rel="stylesheet" href="~/css/Index/Index.css">
 </head>
 
+@if (!User.Identity.IsAuthenticated)
+{
 <section id="header">
     @await Html.PartialAsync("Elements/_Header")
 </section>
 
-<section id="Index">
-    <div class="dd">
-        @await Html.PartialAsync("Index/_Line")
-        
-        <div class="dd__rgt">
-            <div class="page__1">
-                <h1>Manage projects with ease!</h1>
-                <h5>Our project management system is your ticket to success.</h5>
-
-                <div class="input__place">
-                    <input type="text" placeholder="Email address">
-                    <a href="">Sign up for PMS</a>
-                </div>
-            </div>
-
-            <div class="page__2">
-                <p>Productivity</p>
-                <p><span style="color: #3fb950;">We understand that time is money, so</span> we strive to provide you with the most effective and productive experience.</p>
-                <p>We understand that your time is valuable, so we have designed our 
-                    website in such a way that it is as fast and responsive as possible. 
-                    Thanks to the use of modern programming languages, our website loads in a 
-                    matter of seconds, ensuring smooth operation.</p>
-                <a href="">Start managing <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-right"><path d="m9 18 6-6-6-6"/></svg></a>
-            </div>
-            
-            <div class="page__3">
-                <p>Advantages</p>
-                <p><span style="color: #33b3ae; font-size: 30px;">Increased efficiency and productivity</span> <br>
-                    Improved communication and collaboration <br>
-                    <span style="color: #33b3ae; font-size: 30px;">Less stress and anxiety</span> <br>
-
-                    Fast and responsive thanks to the use of modern programming languages <br>
-                    <span style="color: #33b3ae; font-size: 30px;">It is written in the same language spoken by leading technology companies</span></p>
-                <a href="">Manage projects with us</a>
-            </div>
-            
-            <div class="page__4">
-                <p>For Whom</p>
-                <p><span style="color: #f778ba;">Our website is a universal project management</span> solution suitable for everyone who wants to increase their productivity and achieve more in less time.</p>
-            </div>
-            
-            <div class="page__5">
-                <p>Register now and experience the benefits of our exceptional project management system. Simplify project management and take your team to a new level of success!</p>
-                <div class="input__place">
-                    <input type="text" placeholder="Email address">
-                    <a href="">Sign up for PMS</a>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
+@await Html.PartialAsync("Home/IndexNotAuth")
 
 @await Html.PartialAsync("Elements/_Decorate")
+}
+else
+{
+    @await Html.PartialAsync("Home/IndexAuth")
+}
