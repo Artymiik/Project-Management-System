@@ -65,7 +65,12 @@
             </div>
             
             <div class="link">
-                <p class="Title__link">Invitation link</p>
+                <p class="Title__link">
+                    Invitation link 
+                    <span class="copying" style="color: #0a53be; font-size: 12px; margin-left: 5px; cursor: pointer; display: none;">
+                        Copy!
+                    </span>
+                </p>
                 <div class="link__block">
                     <a class="btnCopy">
                         <input class="referralLinkText" type="hidden" value="@Model.AppCompany?.ReferralLink">
@@ -98,7 +103,7 @@
                                     <option>--Me--</option>
                                     @foreach (var user in Model.UsersTask)
                                     {
-                                    <option>@user</option>
+                                        <option value="@user.Id">@user.UserName</option>
                                     }
                                 </select>
                                 <input type="text" placeholder="ending task...">
@@ -121,7 +126,7 @@
                                     <option>--Me--</option>
                                     @foreach (var user in Model.UsersTask)
                                     {
-                                        <option>@user</option>
+                                        <option value="@user.Id">@user.UserName</option>
                                     }
                                 </select>
                                 <input type="text" placeholder="ending task...">

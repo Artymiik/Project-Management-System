@@ -16,6 +16,7 @@ document.body.addEventListener('click', function(e) {
 });
 
 const btnCopy = document.querySelector(".btnCopy");
+const copyTextSuccess = document.querySelector(".copying");
 btnCopy.addEventListener("click", (e) => {
     e.preventDefault();
     let copyText = document.querySelector(".referralLinkText");
@@ -23,4 +24,5 @@ btnCopy.addEventListener("click", (e) => {
     copyText.select();
     navigator.clipboard.writeText(copyText.value);
     copyText.blur();
+    copyTextSuccess.style.display = "inline-block";
 });

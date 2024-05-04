@@ -26,7 +26,7 @@ public class HomeController : Controller
         if (userCurrent == null) return RedirectToAction("Login", "Account");
 
         // Return all data company
-        var com = _context.AppCompany.Where(current => current.AppUserId == userCurrent.Id).FirstOrDefault();
+        var com = _context.AppCompany.FirstOrDefault(current => current.AppUserId == userCurrent.Id);
 
         // Return all users for company
         var company = _context.AppUser.Where(current => current.Company == userCurrent.Company
@@ -34,8 +34,7 @@ public class HomeController : Controller
         List<AppUser> users = company.ToList();
         
         // create IEnumerable users for AppTask
-        var usersTask = _context.AppUser.Where(current => current.Company == userCurrent.Company)
-                                            .Select(username => username.UserName).ToList();
+        List<AppUser> usersTask = _context.AppUser.Where(current => current.Company == userCurrent.Company).ToList();
 
         var indexModel = new IndexModel()
         {

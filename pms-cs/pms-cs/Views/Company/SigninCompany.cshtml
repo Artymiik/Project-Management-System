@@ -1,4 +1,7 @@
-﻿@{
+﻿@using pms_cs.ViewModel
+@model DataSignInCompanyViewModel
+
+@{
     ViewData["Title"] = "Sign in company";
 }
 
@@ -7,16 +10,16 @@
 </head>
 
 <section id="SigninCompany">
-    <p class="Title__company">Create company</p>
+    <p class="Title__company">Sign in @Model.Name</p>
     <div class="Signin__company">
-        <form method="post">
-            <label>Name company</label>
-            <input type="text">
-            <span class="text-danger"></span>
+        <form asp-action="SignIn" method="post">
+            <label asp-for="SecretWord">Secret Word</label>
+            <input asp-for="SecretWord" type="password">
+            <span asp-validation-for="SecretWord" class="text-danger"></span>
 
-            <label>Password for company</label>
-            <input type="password">
-            <span class="text-danger"></span>
+            <label asp-for="Password">Password for company</label>
+            <input asp-for="Password" type="password">
+            <span asp-validation-for="Password" class="text-danger"></span>
             <button>Sign in company</button>
         </form>
     </div>
