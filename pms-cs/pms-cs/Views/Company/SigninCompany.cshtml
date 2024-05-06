@@ -12,6 +12,7 @@
 <section id="SigninCompany">
     <p class="Title__company">Sign in @Model.Name</p>
     <div class="Signin__company">
+        <span>@Model.ErrorMessage</span>
         <form asp-action="SignIn" method="post">
             <label asp-for="SecretWord">Secret Word</label>
             <input asp-for="SecretWord" type="password">

@@ -1,8 +1,8 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 using pms_cs.Data;
+using pms_cs.Interfaces;
 using pms_cs.Models;
 using pms_cs.Repository;
 using pms_cs.ViewModel;
@@ -15,32 +15,43 @@ public class CompanyController : Controller
     // private
     private readonly ApplicationDbContext _context;
     private readonly UserManager<AppUser> _userManager;
+    private readonly AbsApplicationRepository _absApplicationRepository;
     private readonly CompanyNumber _companyNumber;
 
-    public CompanyController(ApplicationDbContext context, UserManager<AppUser> userManager, CompanyNumber companyNumber)
+    public CompanyController(ApplicationDbContext context, UserManager<AppUser> userManager, CompanyNumber companyNumber, AbsApplicationRepository absApplicationRepository)
     {
         _context = context;
         _userManager = userManager;
         _companyNumber = companyNumber;
+        _absApplicationRepository = absApplicationRepository;
         
         DotNetEnv.Env.Load();
     }
+
+    private static string CreateReferralLink(string cNumber)
+    {
+        var protocol = Environment.GetEnvironmentVariable("PROTOCOL");
+        var domain = Environment.GetEnvironmentVariable("DOMAIN");
+        var port = Environment.GetEnvironmentVariable("PORT");
+        
+        return $"{protocol}://{domain}:{port}/Company/SigninCompany/{cNumber}";
+    }
     
+    [HttpGet]
     public IActionResult CreateCompany()
     {
         return View();
     }
+    [HttpGet]
     public async Task<IActionResult> SigninCompany(string id)
     {
-        Console.WriteLine($"id: {id}");
-        var checkingCompany = await _context.AppCompany.FirstOrDefaultAsync(current => current.CompanyNumber == id);
-
-        var nameCompany = new DataSignInCompanyViewModel();
-        if (checkingCompany != null)
+        var checkingCompany = _absApplicationRepository.GetFirstByCompanyNumber(id);
+        DataSignInCompanyViewModel nameCompany = new DataSignInCompanyViewModel()
         {
-            nameCompany.Name = checkingCompany.Name;
-        }
-        
+            Name = checkingCompany.Name
+        };
+
+        TempData["id"] = id;
         return View(nameCompany);
     }
 
@@ -52,11 +63,8 @@ public class CompanyController : Controller
         var userCurrent = await _userManager.GetUserAsync(HttpContext.User);
         if (userCurrent == null) return RedirectToAction("Login", "Account");
 
-        string cNumber = _companyNumber.Main();
-        var protocol = Environment.GetEnvironmentVariable("PROTOCOL");
-        var domain = Environment.GetEnvironmentVariable("DOMAIN");
-        var port = Environment.GetEnvironmentVariable("PORT");
-        string referralLink = $"{protocol}://{domain}:{port}/Company/SigninCompany/{cNumber}";
+        var cNumber = _companyNumber.Main();
+        var referralLink = CreateReferralLink(cNumber);
         
         var company = new AppCompany()
         {
@@ -71,7 +79,7 @@ public class CompanyController : Controller
         await using (_context)
         {
             _context.AppCompany.Add(company);
-            int transaction = await _context.SaveChangesAsync();
+            var transaction = await _context.SaveChangesAsync();
 
             if (transaction > 0)
             {
@@ -85,15 +93,19 @@ public class CompanyController : Controller
     }
 
     [HttpPost]
-    public async Task<IActionResult> SignIn(DataSignInCompanyViewModel signInVM, string id)
+    public async Task<IActionResult> SignIn(DataSignInCompanyViewModel signInVM)
     {
+        var id = TempData["id"]?.ToString();
+        
         var currentUser = await _userManager.GetUserAsync(HttpContext.User);
         if (currentUser == null) return RedirectToAction("Login", "Account");
         
         if (!ModelState.IsValid) return RedirectToAction("SigninCompany", "Company", signInVM);
 
-        var dataAppCompany = _context.AppCompany.FirstOrDefault(current => current.CompanyNumber == id);
-        if (dataAppCompany == null) return RedirectToAction("SigninCompany", "Company", signInVM);
+        if (id == null)
+            return RedirectToAction("SigninCompany", "Company", signInVM);
+        
+        var dataAppCompany = _absApplicationRepository.GetFirstByCompanyNumber(id);
         
         // security
         if (signInVM.SecretWord != dataAppCompany.SecretWord ||

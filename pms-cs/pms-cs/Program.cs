@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using pms_cs.Data;
+using pms_cs.Interfaces;
 using pms_cs.Models;
 using pms_cs.Repository;
 
@@ -12,6 +13,7 @@ builder.Services.AddControllersWithViews();
 
 // Injective
 builder.Services.AddScoped<CompanyNumber>();
+builder.Services.AddScoped<AbsApplicationRepository, ApplicationRepository>();
 
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
 {

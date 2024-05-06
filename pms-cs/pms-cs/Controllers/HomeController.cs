@@ -2,6 +2,7 @@ using System.Diagnostics;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using pms_cs.Data;
+using pms_cs.Interfaces;
 using pms_cs.Models;
 
 namespace pms_cs.Controllers;
@@ -11,14 +12,17 @@ public class HomeController : Controller
     private readonly ILogger<HomeController> _logger;
     private readonly UserManager<AppUser> _userManager;
     private readonly ApplicationDbContext _context;
+    private readonly AbsApplicationRepository _absApplicationRepository;
 
-    public HomeController(ILogger<HomeController> logger, UserManager<AppUser> userManager, ApplicationDbContext context)
+    public HomeController(ILogger<HomeController> logger, UserManager<AppUser> userManager, AbsApplicationRepository absApplicationRepository, ApplicationDbContext context)
     {
         _logger = logger;
         _userManager = userManager;
         _context = context;
+        _absApplicationRepository = absApplicationRepository;
     }
 
+    [HttpGet]
     public async Task<IActionResult> Index()
     {
         // Find id AppUser
@@ -26,7 +30,7 @@ public class HomeController : Controller
         if (userCurrent == null) return RedirectToAction("Login", "Account");
 
         // Return all data company
-        var com = _context.AppCompany.FirstOrDefault(current => current.AppUserId == userCurrent.Id);
+        var com = _absApplicationRepository.GetFirstByAppUserId(userCurrent.Id);
 
         // Return all users for company
         var company = _context.AppUser.Where(current => current.Company == userCurrent.Company
@@ -34,7 +38,7 @@ public class HomeController : Controller
         List<AppUser> users = company.ToList();
         
         // create IEnumerable users for AppTask
-        List<AppUser> usersTask = _context.AppUser.Where(current => current.Company == userCurrent.Company).ToList();
+        List<AppUser> usersTask = _absApplicationRepository.GetAllUsersInCompany(userCurrent.Company);
 
         var indexModel = new IndexModel()
         {

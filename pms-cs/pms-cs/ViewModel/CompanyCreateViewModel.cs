@@ -1,5 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
-using pms_cs.Interfaces;
+using pms_cs.Interfaces.Company;
 
 namespace pms_cs.ViewModel;
 

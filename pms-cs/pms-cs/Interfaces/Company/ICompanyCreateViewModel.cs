@@ -1,4 +1,4 @@
-﻿namespace pms_cs.Interfaces;
+﻿namespace pms_cs.Interfaces.Company;
 
 public interface ICompanyCreateViewModel
 {
