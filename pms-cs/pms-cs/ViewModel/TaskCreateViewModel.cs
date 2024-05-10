@@ -18,7 +18,6 @@ public class TaskCreateViewModel : IDataTask
     }
     
     [Required]
-    [MaxLength(300)]
     public string Description
     {
         get => _description ?? string.Empty;

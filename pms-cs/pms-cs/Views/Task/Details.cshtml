@@ -1,0 +1,27 @@
+﻿@model pms_cs.ViewModel.setModel.DetailsSetModel
+
+@{
+    ViewData["Title"] = "Detail task";
+}
+
+<head>
+    <link rel="stylesheet" href="~/css/DetailsTask/Details.css">
+    <title>@ViewData</title>
+</head>
+
+<section id="Details_task">
+    <p class="title__task">@Model.Title <span>@Model.Company</span></p>
+    <a href="" class="status">@Model.Status</a>
+
+    <div class="container">
+        <p class="date__task">@Model.Beginning - <span>@Model.Ending</span></p>
+        <div class="line"></div>
+        <div class="description__task">@Model.Description</div>
+        <div class="userSend">
+            <img src="~/images/logo.jpg" alt="">
+            <p>@Model.UserNameSending</p>
+        </div>
+    </div>
+</section>
+
+<div class="quer"></div>

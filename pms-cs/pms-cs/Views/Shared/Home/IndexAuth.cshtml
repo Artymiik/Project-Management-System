@@ -1,4 +1,9 @@
-﻿@model IndexModel
+﻿@using pms_cs.ViewModel
+@model IndexModel
+
+@{
+    var taskViewModel = new TaskCreateViewModel();
+}
 
 <head>
     <link rel="stylesheet" href="~/css/Index/IndexAuth.css">
@@ -48,7 +53,7 @@
             </div>
             
             <div class="peoples">
-                @if (Model.AppUser.Count() == 0)
+                @if (Model.AppUser?.Count() == 0)
                 {
                     <p style="color: #838383; text-align: center; font-size: 13px; font-weight: 300;">
                         You don't have any colleagues or an active company
@@ -94,20 +99,20 @@
                     <div class="card__create__task">
                         <p class="Title__card">Create a task for the company</p>
                         <p class="Description__task">Choose the person who will receive your task</p>
-                        <form>
-                            <label>Task name *</label>
-                            <input type="text" placeholder="title your new task...">
+                        <form asp-controller="Task" asp-action="Create" method="post">
+                            <label asp-for="@taskViewModel.Title">Task name *</label>
+                            <input asp-for="@taskViewModel.Title" type="text" placeholder="title your new task...">
                             <div class="flex">
-                                <select>
+                                <select asp-for="@taskViewModel.UserIdRecipient">
                                     <option>Select people</option>
                                     @foreach (var user in Model.UsersTask)
                                     {
                                         <option value="@user.Id">@user.UserName</option>
                                     }
                                 </select>
-                                <input type="text" placeholder="ending task...">
+                                <input asp-for="@taskViewModel.Ending" type="text" placeholder="ending task...">
                             </div>
-                            <textarea placeholder="description for task"></textarea>
+                            <textarea asp-for="@taskViewModel.Description" placeholder="description for task"></textarea>
                             <button>Send task</button>
                         </form>
                     </div>
@@ -140,25 +145,27 @@
         <div class="Tasks">
             <div class="Tasks__card">
                 <div class="Title__card">My Tasks</div>
-                <div class="task__number">
-                    <p class="time">14 hours ago</p>
-                    <a href="">To make an application namely backend payment in the database</a>
-                </div>
-
-                <div class="task__number">
-                    <p class="time">14 hours ago</p>
-                    <a href="">To make an application namely backend payment in the database</a>
-                </div>
-
-                <div class="task__number">
-                    <p class="time">14 hours ago</p>
-                    <a href="">To make an application namely backend payment in the database</a>
-                </div>
-
-                <div class="task__number">
-                    <p class="time">14 hours ago</p>
-                    <a href="">To make an application namely backend payment in the database</a>
-                </div>
+                @foreach(var item in Model.AllTasks)
+                {
+                    TimeSpan remaining = item.Ending - item.Beginning;
+                    int days = remaining.Days;
+                    
+                    <div class="task__number">
+                        @if (days < 0)
+                        {
+                            <p class="time">Overdue</p>
+                        }
+                        else if (days == 0)
+                        {
+                            <p class="time">Today is the last day</p>
+                        }
+                        else
+                        {
+                            <p class="time">@days days left</p>
+                        }
+                        <a asp-controller="Task" asp-action="Details" asp-route-id="@item.Id">@item.Title</a>
+                    </div>
+                }
             </div>
         </div>
     </div>

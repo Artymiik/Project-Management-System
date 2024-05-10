@@ -1,0 +1,17 @@
+﻿.text-danger {
+    color: red;
+    display: flex;
+    justify-content: center;
+    margin: 50px 0;
+}
+
+h3 {
+    margin-top: 40px;
+    color: #b50000;
+    text-align: center;
+}
+
+p {
+    color: #fff;
+    text-align: center;
+}

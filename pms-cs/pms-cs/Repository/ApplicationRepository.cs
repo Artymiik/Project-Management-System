@@ -1,6 +1,8 @@
-﻿using System.Globalization;
+﻿using System.Diagnostics.Tracing;
+using System.Globalization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using pms_cs.Data;
 using pms_cs.Interfaces;
 using pms_cs.Models;
@@ -11,7 +13,7 @@ namespace pms_cs.Repository;
 public class ApplicationRepository : AbsApplicationRepository
 {
     private readonly ApplicationDbContext _ctx;
-    public ApplicationRepository(ApplicationDbContext context, UserManager<AppUser> userManager) => _ctx = context;
+    public ApplicationRepository(ApplicationDbContext context) => _ctx = context;
     
     // Date Parse
     private DateTime DateParse(string endingInput)
@@ -20,16 +22,16 @@ public class ApplicationRepository : AbsApplicationRepository
     }
     
     // GetFirstByCompanyNumber
-    public override AppCompany GetFirstByCompanyNumber(object id)
+    public override AppCompany GetFirstByCompanyNumber(string id)
     {
         var dataCompany = _ctx.AppCompany.FirstOrDefault(current => current.CompanyNumber == id);
         return dataCompany ?? new AppCompany();
     }
 
     // GetFirstByAppUserId
-    public override AppCompany GetFirstByAppUserId(object id)
+    public override AppCompany GetFirstByAppUserId(string id)
     {
-        var data = _ctx.AppCompany.FirstOrDefault(current => current.AppUserId == id.ToString());
+        var data = _ctx.AppCompany.FirstOrDefault(current => current.AppUserId == id);
         return data ?? new AppCompany();
     }
 
@@ -45,10 +47,10 @@ public class ApplicationRepository : AbsApplicationRepository
     // CreateTask
     public override async Task<bool> CreateTask(TaskCreateViewModel taskViewModel, AppUser httpUser)
     {
-        DateTime endingInput = DateParse(taskViewModel.Ending);
-
         try
         {
+            var endingInput = DateParse(taskViewModel?.Ending);
+        
             var data = new AppTask()
             {
                 Title = taskViewModel.Title,
@@ -61,7 +63,7 @@ public class ApplicationRepository : AbsApplicationRepository
 
             await using (_ctx)
             {
-                EntityEntry<AppTask> add = _ctx.AppTask.Add(data);
+                _ctx.AppTask.Add(data);
                 await _ctx.SaveChangesAsync();
                 
                 return true;
@@ -72,5 +74,27 @@ public class ApplicationRepository : AbsApplicationRepository
             Console.WriteLine(e);
             return false;
         }
+    }
+
+    // Get all task (Index: page)
+    public override IQueryable<AppTask> GetAllTasks(string id)
+    {
+        var data = _ctx.AppTask.Where(task => task.AppUserIdRecipient == id);
+        return data;
+    }
+
+    // All info task for (Details: page)
+    public override AppTask? GetInfoAppTaskById(int id)
+    {
+        return _ctx.AppTask.SingleOrDefault(task => task.Id == id);
+    }
+
+    public override string GetUsernameSending(string id)
+    {
+        return _ctx.AppUser.FirstOrDefault(user => user.Id == id)?.UserName ?? id;
+    }
+    public override string GetCompanyName(string id)
+    {
+        return _ctx.AppCompany.FirstOrDefault(company => company.CompanyNumber == id)?.Name ?? id;
     }
 }

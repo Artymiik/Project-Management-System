@@ -58,7 +58,7 @@ public class CompanyController : Controller
     [HttpPost]
     public async Task<IActionResult> Create(CompanyCreateViewModel companyCM)
     {
-        if (!ModelState.IsValid) return RedirectToAction("CreateCompany", "Company", companyCM);
+        if (!ModelState.IsValid) return View("CreateCompany", companyCM);
         
         var userCurrent = await _userManager.GetUserAsync(HttpContext.User);
         if (userCurrent == null) return RedirectToAction("Login", "Account");
@@ -96,11 +96,11 @@ public class CompanyController : Controller
     public async Task<IActionResult> SignIn(DataSignInCompanyViewModel signInVM)
     {
         var id = TempData["id"]?.ToString();
+        Console.WriteLine(id);
         
         var currentUser = await _userManager.GetUserAsync(HttpContext.User);
-        if (currentUser == null) return RedirectToAction("Login", "Account");
         
-        if (!ModelState.IsValid) return RedirectToAction("SigninCompany", "Company", signInVM);
+        if (signInVM.SecretWord == "" || signInVM.Password == "") return View("SigninCompany", signInVM);
 
         if (id == null)
             return RedirectToAction("SigninCompany", "Company", signInVM);

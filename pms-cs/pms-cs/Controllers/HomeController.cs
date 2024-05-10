@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using pms_cs.Data;
 using pms_cs.Interfaces;
 using pms_cs.Models;
+using pms_cs.ViewModel;
 
 namespace pms_cs.Controllers;
 
@@ -39,12 +40,17 @@ public class HomeController : Controller
         
         // create IEnumerable users for AppTask
         List<AppUser> usersTask = _absApplicationRepository.GetAllUsersInCompany(userCurrent.Company);
+        
+        // Get all task
+        List<AppTask> tasks = _absApplicationRepository.GetAllTasks(userCurrent.Id).ToList();
 
         var indexModel = new IndexModel()
         {
             AppUser = users,
             UsersTask = usersTask,
             AppCompany = com,
+            AllTasks = tasks,
+            TaskCreateViewModel = new TaskCreateViewModel(), 
         };
         
         return View(indexModel);

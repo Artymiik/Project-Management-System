@@ -9,8 +9,7 @@ public class DataSignInCompanyViewModel : IDataSignInCompanyViewModel
     private string? _secretWord;
     private string? _password;
     private string? _errorMessage;
-
-    [Required]
+    
     public string Name
     {
         get => _name ?? string.Empty;
@@ -23,7 +22,6 @@ public class DataSignInCompanyViewModel : IDataSignInCompanyViewModel
         set => _secretWord = value;
     }
     [Required]
-    [DataType(DataType.Password)]
     public string Password
     {
         get => _password ?? string.Empty;
