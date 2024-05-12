@@ -35,6 +35,10 @@
             <a href="">Create task</a>
         </div>
         <div class="elem">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-calendar-check-2"><path d="M8 2v4"/><path d="M16 2v4"/><path d="M21 14V6a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h8"/><path d="M3 10h18"/><path d="m16 20 2 2 4-4"/></svg>
+            <a href="">Created tasks</a>
+        </div>
+        <div class="elem">
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-message-square-warning"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/><path d="M12 7v2"/><path d="M12 13h.01"/></svg>
             <a href="">Create report</a>
         </div>
@@ -145,26 +149,34 @@
         <div class="Tasks">
             <div class="Tasks__card">
                 <div class="Title__card">My Tasks</div>
-                @foreach(var item in Model.AllTasks)
+                @if (@Model.AllTasks != null)
                 {
-                    TimeSpan remaining = item.Ending - item.Beginning;
-                    int days = remaining.Days;
+                    @foreach(var item in Model.AllTasks)
+                    {
+                        DateTime today = DateTime.Now;
+                        TimeSpan remaining = item.Ending - today;
+                        int days = remaining.Days;
                     
-                    <div class="task__number">
-                        @if (days < 0)
-                        {
-                            <p class="time">Overdue</p>
-                        }
-                        else if (days == 0)
-                        {
-                            <p class="time">Today is the last day</p>
-                        }
-                        else
-                        {
-                            <p class="time">@days days left</p>
-                        }
-                        <a asp-controller="Task" asp-action="Details" asp-route-id="@item.Id">@item.Title</a>
-                    </div>
+                        <div class="task__number">
+                            @if (days < 0)
+                            {
+                                <p class="time">Overdue</p>
+                            }
+                            else if (days == 0)
+                            {
+                                <p class="time">Today is the last day</p>
+                            }
+                            else
+                            {
+                                <p class="time">@days days left</p>
+                            }
+                            <a asp-controller="Task" asp-action="Details" asp-route-id="@item.Id">@item.Title</a>
+                        </div>
+                    }
+                }
+                else
+                {
+                    <p class="all__task__not__found">We have not found your tasks</p>
                 }
             </div>
         </div>

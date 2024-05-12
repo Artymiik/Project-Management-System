@@ -25,7 +25,7 @@ public class ApplicationRepository : AbsApplicationRepository
     public override AppCompany GetFirstByCompanyNumber(string id)
     {
         var dataCompany = _ctx.AppCompany.FirstOrDefault(current => current.CompanyNumber == id);
-        return dataCompany ?? new AppCompany();
+        return dataCompany ?? throw new Exception("Company id not found");
     }
 
     // GetFirstByAppUserId
@@ -58,7 +58,7 @@ public class ApplicationRepository : AbsApplicationRepository
                 Ending = endingInput,
                 AppUserIdSend = httpUser.Id,
                 AppUserIdRecipient = taskViewModel.UserIdRecipient,
-                CompanyNumber = httpUser.Company ?? "",
+                CompanyNumber = httpUser.Company ?? throw new Exception("Company id not found"),
             };
 
             await using (_ctx)
@@ -91,10 +91,12 @@ public class ApplicationRepository : AbsApplicationRepository
 
     public override string GetUsernameSending(string id)
     {
-        return _ctx.AppUser.FirstOrDefault(user => user.Id == id)?.UserName ?? id;
+        return _ctx.AppUser.FirstOrDefault(user => user.Id == id)?.UserName ?? 
+               throw new Exception("User sending not found");
     }
     public override string GetCompanyName(string id)
     {
-        return _ctx.AppCompany.FirstOrDefault(company => company.CompanyNumber == id)?.Name ?? id;
+        return _ctx.AppCompany.FirstOrDefault(company => company.CompanyNumber == id)?.Name ?? 
+               throw new Exception("Company name not found");
     }
 }

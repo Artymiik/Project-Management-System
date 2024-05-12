@@ -1,0 +1,2 @@
+connection_string = "Driver={SQL Server};Server=ECHIPSCOMPUTER;Database=PMS;Trusted_Connection=Yes;Encrypt=False;TrustServerCertificate=True"
+csv_file_task = "C:\\Users\\Artemiik\\Documents\\git\\Project-Management-System\\pms-py\\scripts\\temp\\tasks.csv"
